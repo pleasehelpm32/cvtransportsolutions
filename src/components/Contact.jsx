@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "", // New field for phone number
     inquiry: "",
   });
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -15,10 +18,17 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log(formData);
+    setSubmitStatus("sending");
+    try {
+      await axios.post("http://localhost:3001/send-email", formData);
+      setSubmitStatus("success");
+      setFormData({ name: "", email: "", phone: "", inquiry: "" });
+    } catch (error) {
+      console.error("Error sending email:", error);
+      setSubmitStatus("error");
+    }
   };
 
   return (
@@ -72,6 +82,23 @@ const Contact = () => {
             </div>
             <div className="mb-6">
               <label
+                htmlFor="phone"
+                className="block text-black text-sm font-bold mb-2"
+              >
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                className="w-full px-3 py-2 text-black border border-gray-300 rounded-lg focus:outline-none focus:border-yellow"
+                placeholder="(123) 456-7890"
+              />
+            </div>
+            <div className="mb-6">
+              <label
                 htmlFor="inquiry"
                 className="block text-black text-sm font-bold mb-2"
               >
@@ -92,10 +119,21 @@ const Contact = () => {
               <button
                 type="submit"
                 className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-lg focus:outline-none focus:shadow-outline transition duration-300"
+                disabled={submitStatus === "sending"}
               >
-                Submit
+                {submitStatus === "sending" ? "Sending..." : "Submit"}
               </button>
             </div>
+            {submitStatus === "success" && (
+              <p className="text-green-600 text-center mt-4">
+                Message sent successfully!
+              </p>
+            )}
+            {submitStatus === "error" && (
+              <p className="text-red-600 text-center mt-4">
+                Error sending message. Please try again.
+              </p>
+            )}
           </form>
           <div className="bg-white p-8 rounded-lg shadow-lg lg:w-1/3">
             <h4 className="text-2xl font-bold mb-4 text-black">Get in Touch</h4>
