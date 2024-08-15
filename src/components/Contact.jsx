@@ -22,7 +22,7 @@ const Contact = () => {
     e.preventDefault();
     setSubmitStatus("sending");
     try {
-      await axios.post("http://localhost:3001/send-email", formData);
+      await axios.post("/.netlify/functions/send-email", formData);
       setSubmitStatus("success");
       setFormData({ name: "", email: "", phone: "", inquiry: "" });
     } catch (error) {
