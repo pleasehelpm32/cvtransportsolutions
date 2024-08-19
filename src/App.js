@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Contact from "./components/Contact";
+import Services from "./components/Services";
 
 function App({ apiKey }) {
   return (
@@ -16,6 +17,7 @@ function App({ apiKey }) {
               <>
                 <Hero apiKey={apiKey} />
                 <Contact />
+                <Services />
               </>
             }
           />
