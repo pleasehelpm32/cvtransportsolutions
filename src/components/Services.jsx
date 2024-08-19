@@ -3,6 +3,7 @@ import ecommerce from "../assets/ecommerce.webp";
 import homedelivery from "../assets/homedelivery.avif";
 import lastmileservice from "../assets/lastmileservice.jpg";
 import whitegloveservice from "../assets/whitegloveservice.jpg";
+import { Helmet } from "react-helmet";
 
 const scrollToInquiry = () => {
   const inquiryElement = document.getElementById("get-quote");
