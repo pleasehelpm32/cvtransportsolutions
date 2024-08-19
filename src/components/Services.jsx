@@ -81,23 +81,32 @@ const Services = () => {
   ];
 
   return (
-    <div id="services" className="bg-black py-24">
-      <div className="container mx-auto px-4">
-        <h1 className="text-5xl font-bold text-center text-yellow-400 mb-16">
-          Our Services
-        </h1>
-        {services.map((service, index) => (
-          <ServiceItem
-            key={index}
-            title={service.title}
-            subtitle={service.subtitle}
-            description={service.description}
-            imageSrc={service.imageSrc}
-            isReversed={index % 2 !== 0}
-          />
-        ))}
+    <>
+      <Helmet>
+        <title>Our Services - CV Transport Solutions</title>
+        <meta
+          name="description"
+          content="Explore our range of delivery services including home delivery, e-commerce delivery, white glove service, and last mile service in the GTA."
+        />
+      </Helmet>
+      <div id="services" className="bg-black py-24">
+        <div className="container mx-auto px-4">
+          <h1 className="text-5xl font-bold text-center text-yellow-400 mb-16">
+            Our Services
+          </h1>
+          {services.map((service, index) => (
+            <ServiceItem
+              key={index}
+              title={service.title}
+              subtitle={service.subtitle}
+              description={service.description}
+              imageSrc={service.imageSrc}
+              isReversed={index % 2 !== 0}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
