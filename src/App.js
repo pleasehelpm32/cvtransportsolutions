@@ -1,31 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import CookieConsent from "react-cookie-consent";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Contact from "./components/Contact";
 import Services from "./components/Services";
+import CookiePreferencesModal from "./components/CookieConsent";
 
 function App({ apiKey }) {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <Router>
       <div className="pt-24">
-        <Helmet>
-          <title>
-            CV Transport Solutions - Fast & Reliable Appliance Delivery in the
-            GTA
-          </title>
-          <meta
-            name="description"
-            content="CV Transport Solutions offers fast, reliable, and professional appliance delivery services in the Greater Toronto Area. Get a free quote today!"
-          />
-          <meta
-            name="keywords"
-            content="appliance delivery, GTA delivery, home delivery, e-commerce delivery, white glove service, last mile service"
-          />
-          <meta name="author" content="CV Transport Solutions" />
-          <link rel="canonical" href="https://www.cvtransportsolutions.com" />
-        </Helmet>
         <Navbar />
         <Routes>
           <Route
@@ -40,6 +27,58 @@ function App({ apiKey }) {
           />
           {/* Add more routes here if you have other pages */}
         </Routes>
+        <CookieConsent
+          location="bottom"
+          buttonText="Accept All"
+          declineButtonText="Reject All"
+          cookieName="myWebsiteCookieConsent"
+          style={{ background: "#2B373B" }}
+          buttonStyle={{
+            color: "#4e503b",
+            fontSize: "13px",
+            borderRadius: "3px",
+            padding: "5px 10px",
+            marginLeft: "10px",
+          }}
+          declineButtonStyle={{
+            color: "#4e503b",
+            fontSize: "13px",
+            borderRadius: "3px",
+            padding: "5px 10px",
+            marginLeft: "10px",
+          }}
+          enableDeclineButton
+          onDecline={() => {
+            // Handle decline logic here
+          }}
+        >
+          We value your privacy. We use cookies to enhance your browsing
+          experience, serve personalized ads or content, and analyze our
+          traffic. By clicking "Accept All", you consent to our use of cookies.{" "}
+          <button
+            style={{
+              textDecoration: "underline",
+              color: "#fff",
+              background: "none",
+              border: "none",
+              padding: 0,
+              font: "inherit",
+              cursor: "pointer",
+            }}
+            onClick={() => setShowModal(true)}
+          >
+            Customize
+          </button>
+        </CookieConsent>
+        <CookiePreferencesModal
+          isOpen={showModal}
+          onClose={() => setShowModal(false)}
+          onSave={(preferences) => {
+            console.log(preferences);
+            setShowModal(false);
+            // Handle saving preferences here
+          }}
+        />
       </div>
     </Router>
   );
