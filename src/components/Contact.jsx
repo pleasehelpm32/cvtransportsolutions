@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "", // New field for phone number
+    phone: "",
     inquiry: "",
   });
   const [submitStatus, setSubmitStatus] = useState(null);
+  const inquiryRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,8 +32,16 @@ const Contact = () => {
     }
   };
 
+  useEffect(() => {
+    if (inquiryRef.current && window.location.hash === "#get-quote") {
+      inquiryRef.current.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => {
+        inquiryRef.current.focus();
+      }, 100);
+    }
+  }, []);
   return (
-    <div className="w-full bg-yellow py-24 px-4">
+    <div id="get-quote" className="w-full bg-yellow py-24 px-4">
       <div className="max-w-6xl mx-auto">
         <h3 className="text-4xl font-bold mb-8 text-center text-black">
           Contact Us
@@ -111,6 +120,7 @@ const Contact = () => {
                 onChange={handleChange}
                 required
                 rows="6"
+                ref={inquiryRef}
                 className="w-full px-3 py-2 text-black border border-gray-300 rounded-lg focus:outline-none focus:border-yellow"
                 placeholder="How can we help you?"
               />

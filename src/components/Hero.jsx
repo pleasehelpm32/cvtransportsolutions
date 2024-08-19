@@ -1,5 +1,6 @@
 import React from "react";
 import { GoogleMap, useLoadScript, Polygon } from "@react-google-maps/api";
+import { Link } from "react-router-dom";
 
 const mapContainerStyle = {
   width: "100%",
@@ -39,6 +40,19 @@ const Hero = () => {
       </GoogleMap>
     );
   };
+  const handleGetQuote = (e) => {
+    e.preventDefault();
+    const quoteSection = document.getElementById("get-quote");
+    if (quoteSection) {
+      quoteSection.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => {
+        const inquiryField = quoteSection.querySelector("#inquiry");
+        if (inquiryField) {
+          inquiryField.focus();
+        }
+      }, 1000);
+    }
+  };
 
   return (
     <div className="flex flex-col md:flex-row items-center justify-between px-4 md:px-8 py-12">
@@ -52,7 +66,10 @@ const Hero = () => {
           reliable, and professional delivery services tailored to your
           schedule.
         </p>
-        <button className="bg-yellow-400 text-gray-800 mr-3 px-6 py-3 text-lg font-semibold rounded-md hover:bg-yellow-500 transition duration-300 ease-in-out shadow-md">
+        <button
+          onClick={handleGetQuote}
+          className="bg-yellow-400 text-gray-800 mr-3 px-6 py-3 text-lg font-semibold rounded-md hover:bg-yellow-500 transition duration-300 ease-in-out shadow-md inline-block"
+        >
           Get a Free Quote Today
         </button>
       </div>
