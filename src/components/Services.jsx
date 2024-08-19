@@ -4,6 +4,19 @@ import homedelivery from "../assets/homedelivery.avif";
 import lastmileservice from "../assets/lastmileservice.jpg";
 import whitegloveservice from "../assets/whitegloveservice.jpg";
 
+const scrollToInquiry = () => {
+  const inquiryElement = document.getElementById("get-quote");
+  if (inquiryElement) {
+    inquiryElement.scrollIntoView({ behavior: "smooth" });
+    setTimeout(() => {
+      const inquiryField = inquiryElement.querySelector("#inquiry");
+      if (inquiryField) {
+        inquiryField.focus();
+      }
+    }, 500);
+  }
+};
+
 const ServiceItem = ({
   title,
   subtitle,
@@ -14,18 +27,23 @@ const ServiceItem = ({
   <div
     className={`flex flex-col ${
       isReversed ? "md:flex-row-reverse" : "md:flex-row"
-    } items-center mb-16`}
+    } items-center mb-24 bg-gray-900 rounded-lg overflow-hidden shadow-2xl`}
   >
-    <div className="md:w-1/2 px-4 mb-6 md:mb-0">
-      <h2 className="text-3xl font-bold mb-2 text-white">{title}</h2>
-      <h3 className="text-xl font-semibold mb-4 text-yellow-400">{subtitle}</h3>
-      <p className="text-lg text-white mb-6">{description}</p>
-      <button className="bg-yellow-400 text-black font-bold py-2 px-4 rounded hover:bg-yellow-500 transition duration-300">
-        Learn More
-      </button>
+    <div className="md:w-1/2 p-8">
+      <h2 className="text-3xl font-bold mb-2 text-yellow-400">{title}</h2>
+      <h3 className="text-xl font-semibold mb-4 text-white">{subtitle}</h3>
+      <p className="text-lg text-gray-300 mb-8">{description}</p>
+      <div className="flex justify-center">
+        <button
+          onClick={scrollToInquiry}
+          className="bg-yellow-400 text-black font-bold py-3 px-8 rounded-full hover:bg-yellow-500 transition duration-300 transform hover:scale-105 shadow-lg"
+        >
+          Get a Quote
+        </button>
+      </div>
     </div>
     <div className="md:w-1/2">
-      <img src={imageSrc} alt={title} className="rounded-lg shadow-lg" />
+      <img src={imageSrc} alt={title} className="w-full h-full object-cover" />
     </div>
   </div>
 );
@@ -63,9 +81,9 @@ const Services = () => {
   ];
 
   return (
-    <div className="bg-black py-16">
+    <div id="services" className="bg-black py-24">
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold text-center text-white mb-12">
+        <h1 className="text-5xl font-bold text-center text-yellow-400 mb-16">
           Our Services
         </h1>
         {services.map((service, index) => (

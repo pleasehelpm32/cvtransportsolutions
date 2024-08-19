@@ -8,7 +8,9 @@ import Services from "./components/Services";
 function App({ apiKey }) {
   return (
     <Router>
-      <div>
+      <div className="pt-24">
+        {" "}
+        {/* Add padding-top to account for fixed navbar */}
         <Navbar />
         <Routes>
           <Route
@@ -16,8 +18,8 @@ function App({ apiKey }) {
             element={
               <>
                 <Hero apiKey={apiKey} />
-                <Contact />
                 <Services />
+                <Contact />
               </>
             }
           />

@@ -9,16 +9,39 @@ const Navbar = () => {
     setNav(!nav);
   };
 
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setNav(false); // Close mobile menu if open
+    }
+  };
+
   return (
-    <div className="flex justify-between items-center h-24 w-full px-4 bg-white relative">
+    <div className="flex justify-between items-center h-24 w-full px-4 bg-white fixed top-0 left-0 z-50">
       <div className="flex items-center">
         <img className="w-24 h-auto" src={logo} alt="cvtransportlogo" />
         <h1 className="sr-only">CV Transport Solutions</h1>
       </div>
       <ul className="hidden md:flex space-x-12 text-3xl items-center justify-center flex-grow">
-        <li className="hover:text-yellow-500 cursor-pointer">Home</li>
-        <li className="hover:text-yellow-500 cursor-pointer">About</li>
-        <li className="hover:text-yellow-500 cursor-pointer">Contact</li>
+        {/* <li
+          onClick={() => scrollToSection("hero")}
+          className="hover:text-yellow-500 cursor-pointer"
+        >
+          Home
+        </li> */}
+        <li
+          onClick={() => scrollToSection("services")}
+          className="hover:text-yellow-500 cursor-pointer"
+        >
+          Services
+        </li>
+        <li
+          onClick={() => scrollToSection("contact")}
+          className="hover:text-yellow-500 cursor-pointer"
+        >
+          Contact
+        </li>
       </ul>
       <div onClick={handleNav} className="block md:hidden z-20">
         {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
@@ -32,13 +55,24 @@ const Navbar = () => {
       >
         <img className="w-24 h-auto m-4" src={logo} alt="cvtransportlogo" />
         <ul className="uppercase p-4">
-          <li className="p-4 border-b border-gray-300 text-xl font-semibold">
+          <li
+            onClick={() => scrollToSection("hero")}
+            className="p-4 border-b border-gray-300 text-xl font-semibold cursor-pointer"
+          >
             Home
           </li>
-          <li className="p-4 border-b border-gray-300 text-xl font-semibold">
-            About
+          <li
+            onClick={() => scrollToSection("services")}
+            className="p-4 border-b border-gray-300 text-xl font-semibold cursor-pointer"
+          >
+            Services
           </li>
-          <li className="p-4 text-xl font-semibold">Contact</li>
+          <li
+            onClick={() => scrollToSection("contact")}
+            className="p-4 text-xl font-semibold cursor-pointer"
+          >
+            Contact
+          </li>
         </ul>
       </div>
     </div>

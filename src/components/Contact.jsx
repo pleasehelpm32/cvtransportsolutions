@@ -41,8 +41,8 @@ const Contact = () => {
     }
   }, []);
   return (
-    <div id="get-quote" className="w-full bg-yellow py-24 px-4">
-      <div className="max-w-6xl mx-auto">
+    <div id="contact" className="w-full bg-yellow py-24 px-4">
+      <div id="get-quote" className="max-w-6xl mx-auto">
         <h3 className="text-4xl font-bold mb-8 text-center text-black">
           Contact Us
         </h3>

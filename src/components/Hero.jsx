@@ -55,7 +55,10 @@ const Hero = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between px-4 md:px-8 py-12">
+    <div
+      id="hero"
+      className="flex flex-col md:flex-row items-center justify-between px-4 md:px-8 py-12"
+    >
       {/* Left Column */}
       <div className="flex flex-col justify-center md:w-1/2 text-center md:text-left space-y-6 mb-8 md:mb-0">
         <h1 className="text-4xl md:text-5xl font-bold text-gray-800">
