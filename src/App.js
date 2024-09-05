@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import CookieConsent from "react-cookie-consent";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
+// import Hero from "./components/Hero";
+import Hero2 from "./components/Hero2";
 import Contact from "./components/Contact";
 import Services from "./components/Services";
 import CookiePreferencesModal from "./components/CookieConsent";
@@ -19,7 +20,9 @@ function App({ apiKey }) {
             path="/"
             element={
               <>
-                <Hero apiKey={apiKey} />
+                {/* <Hero apiKey={apiKey} /> */}
+                <Hero2 />
+
                 <Services />
                 <Contact />
               </>
