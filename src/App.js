@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import CookieConsent from "react-cookie-consent";
 import Navbar from "./components/Navbar";
-// import Hero from "./components/Hero";
 import Hero2 from "./components/Hero2";
-import Contact from "./components/Contact";
 import Services from "./components/Services";
+import Testimonials from "./components/Testimonials";
+import About from "./components/About";
+import FAQ from "./components/FAQ";
+import Contact from "./components/Contact";
 import CookiePreferencesModal from "./components/CookieConsent";
 
 function App({ apiKey }) {
@@ -13,55 +15,75 @@ function App({ apiKey }) {
 
   return (
     <Router>
-      <div className="pt-24">
+      <div className="pt-[4.5rem]">
         <Navbar />
         <Routes>
           <Route
             path="/"
             element={
-              <>
-                {/* <Hero apiKey={apiKey} /> */}
+              <main>
                 <Hero2 />
-
                 <Services />
+                <Testimonials />
+                <About />
+                <FAQ />
                 <Contact />
-              </>
+                {/* Footer */}
+                <footer className="bg-gray-950 text-gray-500 py-8 sm:py-10 px-4 sm:px-6 lg:px-8">
+                  <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-sm">
+                    <p>&copy; {new Date().getFullYear()} CV Transport Solutions. All rights reserved.</p>
+                    <a
+                      href="tel:6475602808"
+                      className="text-gray-400 hover:text-yellow-400 transition-colors font-medium"
+                    >
+                      (647) 560-2808
+                    </a>
+                  </div>
+                </footer>
+              </main>
             }
           />
-          {/* Add more routes here if you have other pages */}
         </Routes>
         <CookieConsent
           location="bottom"
           buttonText="Accept All"
           declineButtonText="Reject All"
           cookieName="myWebsiteCookieConsent"
-          style={{ background: "#2B373B" }}
-          buttonStyle={{
-            color: "#4e503b",
+          style={{
+            background: "#111827",
+            borderTop: "1px solid #1f2937",
+            padding: "12px 16px",
             fontSize: "13px",
-            borderRadius: "3px",
-            padding: "5px 10px",
-            marginLeft: "10px",
+            alignItems: "center",
+          }}
+          buttonStyle={{
+            background: "#fbbf24",
+            color: "#111827",
+            fontSize: "13px",
+            fontWeight: "600",
+            borderRadius: "8px",
+            padding: "8px 16px",
+            marginLeft: "8px",
           }}
           declineButtonStyle={{
-            color: "#4e503b",
+            background: "transparent",
+            border: "1px solid #374151",
+            color: "#9ca3af",
             fontSize: "13px",
-            borderRadius: "3px",
-            padding: "5px 10px",
-            marginLeft: "10px",
+            borderRadius: "8px",
+            padding: "8px 16px",
+            marginLeft: "8px",
           }}
           enableDeclineButton
-          onDecline={() => {
-            // Handle decline logic here
-          }}
+          onDecline={() => {}}
         >
-          We value your privacy. We use cookies to enhance your browsing
-          experience, serve personalized ads or content, and analyze our
-          traffic. By clicking "Accept All", you consent to our use of cookies.{" "}
+          <span style={{ color: "#d1d5db" }}>
+            We use cookies to improve your experience.{" "}
+          </span>
           <button
             style={{
               textDecoration: "underline",
-              color: "#fff",
+              color: "#fbbf24",
               background: "none",
               border: "none",
               padding: 0,
@@ -79,7 +101,6 @@ function App({ apiKey }) {
           onSave={(preferences) => {
             console.log(preferences);
             setShowModal(false);
-            // Handle saving preferences here
           }}
         />
       </div>

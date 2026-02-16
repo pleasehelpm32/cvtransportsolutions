@@ -4,10 +4,14 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#FBBF24" />
     <meta
       name="description"
-      content="CV Transport Solutions - Fast & Reliable Appliance Delivery in the GTA"
+      content="CV Transport Solutions — Professional appliance delivery across the Greater Toronto Area. Same-day delivery, white glove service, fully insured. Starting from $89. Call (647) 560-2808."
+    />
+    <meta
+      name="keywords"
+      content="appliance delivery, GTA delivery, Toronto appliance delivery, Mississauga delivery, Brampton delivery, white glove delivery, same day delivery, fridge delivery, washer delivery"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
@@ -28,7 +32,95 @@
       sizes="16x16"
       href="%PUBLIC_URL%/favicon-16x16.png"
     />
-    <title>CV Transport Solutions</title>
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="CV Transport Solutions — GTA Appliance Delivery" />
+    <meta
+      property="og:description"
+      content="Professional appliance delivery across the Greater Toronto Area. Same-day available, fully insured, starting from $89."
+    />
+    <meta property="og:url" content="https://cvtransportsolutions.com" />
+    <meta property="og:site_name" content="CV Transport Solutions" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CV Transport Solutions — GTA Appliance Delivery" />
+    <meta
+      name="twitter:description"
+      content="Professional appliance delivery across the Greater Toronto Area. Same-day available, fully insured, starting from $89."
+    />
+
+    <title>CV Transport Solutions — GTA Appliance Delivery | Same-Day Available</title>
+
+    <!-- Structured Data: LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "CV Transport Solutions",
+      "description": "Professional appliance delivery service in the Greater Toronto Area. Home delivery, white glove service, e-commerce delivery, and last mile logistics.",
+      "url": "https://cvtransportsolutions.com",
+      "telephone": "+1-647-560-2808",
+      "email": "contact@cvtransportsolutions.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "ON",
+        "addressCountry": "CA"
+      },
+      "areaServed": [
+        "Toronto", "Mississauga", "Brampton", "Oakville", "Burlington",
+        "Milton", "Vaughan", "Richmond Hill", "Markham", "Scarborough",
+        "Etobicoke", "North York", "Pickering", "Ajax", "Whitby", "Oshawa"
+      ],
+      "priceRange": "$$",
+      "openingHours": "Mo-Sa 08:00-20:00",
+      "sameAs": []
+    }
+    </script>
+
+    <!--
+      Meta Pixel (Facebook Ads)
+      Replace YOUR_PIXEL_ID with your actual Meta Pixel ID when ready to run ads.
+      Get your Pixel ID from: https://business.facebook.com/events_manager
+    -->
+    <!--
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', 'YOUR_PIXEL_ID');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"
+    /></noscript>
+    -->
+
+    <!--
+      Google Ads Conversion Tracking
+      Replace YOUR_GOOGLE_ADS_ID with your actual Google Ads ID (AW-XXXXXXXXX).
+      Get it from: https://ads.google.com > Tools > Conversions
+    -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GOOGLE_ADS_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'YOUR_GOOGLE_ADS_ID');
+    </script>
+    -->
+
+    <!-- Netlify Analytics: No script tag needed — enable in Netlify dashboard -->
+    <!-- Go to: Netlify > Site Settings > Analytics > Enable Analytics -->
+    <!-- It's server-side, so no client JS required and it won't slow down the site -->
+
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
